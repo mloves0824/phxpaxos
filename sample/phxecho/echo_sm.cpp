@@ -37,6 +37,7 @@ bool PhxEchoSM :: Execute(const int iGroupIdx, const uint64_t llInstanceID,
             SMID(), llInstanceID, sPaxosValue.c_str());
 
     //only commiter node have SMCtx.
+    //Execute函数的上下文参数仅在请求写入所在进程可以获得，在其他机器这个指针为nullptr， 所以Execute在处理这个参数的时候注意要进行空指针的判断。
     if (poSMCtx != nullptr && poSMCtx->m_pCtx != nullptr)
     {
         PhxEchoSMCtx * poPhxEchoSMCtx = (PhxEchoSMCtx *)poSMCtx->m_pCtx;

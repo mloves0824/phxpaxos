@@ -44,10 +44,13 @@ private:
     int MakeLogStoragePath(std::string & sLogStoragePath);
 
 private:
+	//oMyNode标识本机的IP/PORT信息，vecNodeList标识多副本集群的所有机器信息
     phxpaxos::NodeInfo m_oMyNode;
     phxpaxos::NodeInfoList m_vecNodeList;
 
+	//m_poPaxosNode代表了需要运行的PhxPaxos实例指针
     phxpaxos::Node * m_poPaxosNode;
+	//状态机
     PhxEchoSM m_oEchoSM;
 };
     

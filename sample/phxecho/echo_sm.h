@@ -32,6 +32,7 @@ namespace phxecho
 class PhxEchoSMCtx
 {
 public:
+	//通过iExecuteRet可以获得Execute的执行情况，通过sEchoRespValue可以获得Execute带入的sEchoReqValue
     int iExecuteRet;
     std::string sEchoRespValue;
 
@@ -47,8 +48,11 @@ class PhxEchoSM : public phxpaxos::StateMachine
 public:
     PhxEchoSM();
 
+	//Execute为状态机状态转移函数，输入为sPaxosValue， PhxPaxos保证多台机器都会执行相同系列的Execute(sPaxosValue)， 从而获得强一致性
     bool Execute(const int iGroupIdx, const uint64_t llInstanceID, 
             const std::string & sPaxosValue, phxpaxos::SMCtx * poSMCtx);
+
+	//因为一个PhxPaxos可以同时挂载多个状态机，所以需要SMID()这个函数返回这个状态机的唯一标识ID
 
     const int SMID() const { return 1; }
 };
