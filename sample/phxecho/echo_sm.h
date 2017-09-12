@@ -41,6 +41,7 @@ public:
     }
 };
 
+//定义一个状态机叫PhxEchoSM，这个类继承自StateMachine类
 class PhxEchoSM : public phxpaxos::StateMachine
 {
 public:
