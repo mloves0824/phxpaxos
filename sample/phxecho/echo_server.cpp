@@ -97,6 +97,7 @@ int PhxEchoServer :: RunPaxos()
     //set logger
     oOptions.pLogFunc = pLogFunc;
 
+	//负责节点的启动工作，创建PNode赋给m_poPaxosNode
     ret = Node::RunNode(oOptions, m_poPaxosNode);
     if (ret != 0)
     {

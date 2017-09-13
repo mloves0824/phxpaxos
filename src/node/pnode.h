@@ -125,9 +125,11 @@ private:
             const uint64_t llVersion);
 
 private:
+	//PNode类中包含若干个 Group 实例，这个数量是参数化的，多数的 Group 仅仅是为了高并发，和算法本身无关，这些 Group 实例共享一个网络模块和一个存储模块
     std::vector<Group *> m_vecGroupList;
 
 private:
+	//每个group对应有个MasterDamon
     std::vector<MasterDamon *> m_vecMasterList;
 
 private:

@@ -27,6 +27,7 @@ namespace phxpaxos
 
 int Node :: RunNode(const Options & oOptions, Node *& poNode)
 {
+	// 对大数据量的值做了专门的处理优化 TODO
     if (oOptions.bIsLargeValueMode)
     {
         InsideOptions::Instance()->SetAsLargeBufferMode();
@@ -35,6 +36,8 @@ int Node :: RunNode(const Options & oOptions, Node *& poNode)
     poNode = nullptr;
     NetWork * poNetWork = nullptr;
 
+    // 可以经常看到这个 BP ，这里的 Breakpoint 其实是个单例，TODO
+    // 目的是为了方便调试。
     Breakpoint::m_poBreakpoint = nullptr;
     BP->SetInstance(oOptions.poBreakpoint);
 

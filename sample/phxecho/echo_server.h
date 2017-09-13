@@ -30,6 +30,8 @@ See the AUTHORS file for names of contributors.
 namespace phxecho
 {
 
+
+//PhxEchoServer其实对Node的封装，RunPaxos最终调用的是Node::RunNode，Echo最终调用的m_poPaxosNode->Propose
 class PhxEchoServer
 {
 public:
